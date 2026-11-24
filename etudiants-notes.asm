@@ -82,11 +82,11 @@ max_fin:
 
 calc_min:
     mov.s $f8, $f1
-    c.gt.s $f8, $f2
+    c.lt.s $f2, $f8
     bc1f   min_etape2
     mov.s  $f8, $f2
 min_etape2:
-    c.gt.s $f8, $f3
+    c.lt.s $f3, $f8
     bc1f   min_fin
     mov.s  $f8, $f3
 min_fin:
@@ -104,7 +104,7 @@ resultat:
     l.s   $f6, trois
     div.s $f5, $f5, $f6
     l.s   $f9, dix
-    c.ge.s $f5, $f9
+    c.le.s $f9, $f5
     bc1t   est_admis
     li   $v0, 4
     la   $a0, msg_ajourne
